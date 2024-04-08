@@ -4,18 +4,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Short.ly - URL Shortener">
 
   <link rel="stylesheet" href="./src/output.css" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Workbench&display=swap"
     rel="stylesheet" />
-
-  <script src="/src/utils/router.js" defer></script>
-  <!-- <script src="/src/main.js" type="module"></script> -->
   <link rel="icon" type="image/x-icon" href="./src/assets/logo.ico">
+  <script src="/src/router.js" type="module"></script>
+
   <title>Short.ly - URI Shortener</title>
 </head>
 
@@ -23,7 +22,7 @@
   <header class="flex items-center justify-between border-b border-black p-4 py-6">
     <div
       class="__via-red-500 bg-gradient-to-br from-black to-gray-400 bg-clip-text font-logo text-2xl font-black text-transparent">
-      Short.ly
+      <a href="">Short.ly</a>
     </div>
     <nav>
       <menu class="flex items-center gap-4 font-semibold">
@@ -37,9 +36,7 @@
     </nav>
   </header>
 
-  <div id="content" class="flex-1 flex">
-
-  </div>
+  <main id="content" class="flex-1 flex"></main>
 
   <footer class="flex flex-col items-center justify-between border-t border-t-black p-4 md:flex-row">
     <p>Are you a developer? Check out our <a href="#">API</a></p>

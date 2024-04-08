@@ -1,3 +1,8 @@
+import homeScript from "./pages/index.js";
+import docsScript from "./pages/docs.js";
+
+const pageTitle = "Short.ly";
+
 document.addEventListener("click", (event) => {
   if (!event.target.matches("menu li a")) return;
   event.preventDefault();
@@ -7,19 +12,22 @@ document.addEventListener("click", (event) => {
 
 const routes = {
   404: {
-    template: "./pages/404.html",
-    title: "Short.ly | Page not found",
+    template: "/404.html",
+    title: "404 | Page not found",
     description: "Page not found.",
+    mainFn: () => {},
   },
   "/": {
     template: "/src/pages/index.html",
-    title: "Short.ly",
+    title: "Home | " + pageTitle,
     description: "The Shortcut to Shorter Links",
+    mainFn: homeScript,
   },
   "/docs": {
     template: "/src/pages/docs.html",
-    title: "Short.ly | API Doc",
+    title: "API | " + pageTitle,
     description: "Short.ly API documentation for developers.",
+    mainFn: docsScript,
   },
 };
 
@@ -43,10 +51,16 @@ async function URLLocationHandler() {
   );
 
   document.getElementById("content").innerHTML = html;
+  document.title = route.title;
+  document
+    .querySelector('meta[name="description"]')
+    .setAttribute("content", route.description);
+
+  route.mainFn?.();
 }
 
 // watch for url changes
-window.onpopstate = URLLocationHandler;
-window.route = route;
+// window.onpopstate = URLLocationHandler;
+// window.route = route;
 
 URLLocationHandler();

@@ -7,5 +7,6 @@ export async function shortener(payload) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(payload),
+    mode: "no-cors",
   });
 }
