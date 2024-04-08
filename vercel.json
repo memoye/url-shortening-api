@@ -1,9 +1,3 @@
 {
-  "redirects": [
-    {
-      "source": "/docs",
-      "destination": "/src/pages/docs.html",
-      "permanent": false
-    }
-  ]
+  "routes": [{ "src": "/[^.]+", "dest": "/", "status": 200 }]
 }
