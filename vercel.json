@@ -2,7 +2,7 @@
   "redirects": [
     {
       "source": "/docs",
-      "destination": "/src/pages/docs-page.html",
+      "destination": "/src/pages/docs.html",
       "permanent": false
     }
   ]
