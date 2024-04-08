@@ -1,0 +1,63 @@
+<main class="grid items-center border px-4 py-12 md:py-6 w-full">
+  <section class="flex flex-col gap-8 text-center lg:flex-row lg:text-left lg:mx-0 mx-auto items-center justify-center">
+    <div class="max-w-xl space-y-4 lg:mx-0 mx-auto">
+      <img src="/src/assets/undraw_link_shortener_mvf6.svg" class="w-full max-w-40 mx-auto lg:mx-0"
+        alt="url shortening illustration">
+      <h1 class="text-2xl font-bold text-slate-900 md:text-5xl md:leading-snug">
+        <span class="hidden md:inline">Short.ly - </span>The Shortcut to
+        Shorter Links
+      </h1>
+      <p class="max-w-lg lg:mx-0 mx-auto">
+        Just paste the long URL you want to shorten into the box and click
+        "Shorten". You can even customize your short link by selecting a
+        preferred path!
+      </p>
+    </div>
+
+    <form id="shortening_form" class="space-y-4 flex-auto rounded-md bg-slate-900 p-6 text-white">
+      <div class="flex justify-between items-center">
+        <h2 class="text-left text-2xl">Shorten a URL</h2>
+        <div class="-space-x-2 opacity-0" id="loading_indicator">
+          <span
+            class="inline-block h-1 w-3 bg-yellow-500 opacity-80 backdrop-brightness-200 border border-white  animate-spin "></span>
+          <span
+            class="inline-block h-1 w-3 bg-yellow-500 opacity-80 backdrop-brightness-200 border border-white  animate-spin "></span>
+          <span
+            class="inline-block h-1 w-3 bg-yellow-500 opacity-80 backdrop-brightness-200 border border-white  animate-spin "></span>
+        </div>
+      </div>
+      <div>
+        <div class="__p-2 flex items-center gap-1 overflow-hidden rounded-md bg-white px-4 text-slate-900"
+          id="longUrl_field">
+          <label for="long_urls" class="__text-emerald-700 mr-2 hidden w-max font-medium md:block">
+            Long URL
+          </label>
+
+          <input type="url" id="long_url" name="long_url" required class="flex-1 py-4 focus:outline-none"
+            placeholder="https://example.com/really-long-url-you-want-to-shorten" />
+        </div>
+        <div class="min-h-6 text-sm text-red-500"></div>
+      </div>
+
+      <div>
+        <div class="flex items-center gap-1 overflow-hidden rounded-md bg-white px-4 text-slate-900"
+          id="customPath_field">
+          <label for="custom_path" class="__text-emerald-700 mr-2 hidden font-medium md:block">
+            Custom Path
+          </label>
+
+          <div for="url" class="tracking-widest">https://short.ly/</div>
+          <input type="text" id="custom_path" name="custom_path"
+            class="w-full max-w-32 bg-transparent py-4 font-medium tracking-widest placeholder:tracking-widest focus:outline-none"
+            maxlength="8" placeholder="optional-path" />
+        </div>
+        <div class="min-h-6 text-sm text-red-500"></div>
+      </div>
+
+      <button id="shorten_link_btn"
+        class="w-full bg-slate-500 p-2.5 font-semibold hover:bg-slate-600 transition-colors rounded-md"
+        type="submit">Shorten</button>
+    </form>
+  </section>
+  <!-- <script src="/src/main.js" type="module"></script> -->
+</main>
