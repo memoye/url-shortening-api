@@ -4,10 +4,7 @@ import { focusElement } from "../utils/helpers.js";
 export default function main() {
   document.getElementById("customPath_field").addEventListener("click", (e) => {
     focusElement("custom_path");
-    console.log("found");
   });
-
-  console.log("hereeee");
 
   const customPathInput = document.getElementById("custom_path");
   const longUrlInput = document.getElementById("longUrl_input");

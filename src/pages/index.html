@@ -1,30 +1,22 @@
 <div class="grid items-center border px-4 py-12 md:py-6 w-full">
   <section class="flex flex-col gap-8 text-center lg:flex-row lg:text-left lg:mx-0 mx-auto items-center justify-center">
-    <div class="max-w-xl space-y-4 lg:mx-0 mx-auto">
+    <div class="max-w-xl space-y-4 lg:py-4 box-border lg:mx-0 mx-auto">
       <img src="/src/assets/undraw_link_shortener_mvf6.svg" class="w-full max-w-40 mx-auto lg:mx-0"
         alt="url shortening illustration">
-      <h1 class="text-2xl font-bold text-slate-900 md:text-5xl md:leading-snug">
+      <h1 class="text-2xl font-bold text-slate-900 md:text-4xl lg:text-5xl md:leading-snug text-balance">
         <span class="hidden md:inline">Short.ly - </span>The Shortcut to
         Shorter Links
       </h1>
-      <p class="max-w-lg lg:mx-0 mx-auto">
+      <p class="max-w-lg lg:mx-0 mx-auto text-balance">
         Just paste the long URL you want to shorten into the box and click
-        "Shorten". You can even customize your short link by selecting a
+        <span class="font-medium">"Shorten"</span>. You can even customize your short link by selecting a
         preferred path!
       </p>
     </div>
 
-    <form id="shortening_form" class="space-y-4 flex-auto rounded-md bg-slate-900 p-6 text-white">
+    <form id="shortening_form" class="space-y-4 flex-auto rounded-md lg:self-stretch bg-slate-900 p-6 text-white">
       <div class="flex justify-between items-center">
         <h2 class="text-left text-2xl">Shorten a URL</h2>
-        <div class="-space-x-2 opacity-0" id="loading_indicator">
-          <span
-            class="inline-block h-1 w-3 bg-yellow-500 opacity-80 backdrop-brightness-200 border border-white  animate-spin "></span>
-          <span
-            class="inline-block h-1 w-3 bg-yellow-500 opacity-80 backdrop-brightness-200 border border-white  animate-spin "></span>
-          <span
-            class="inline-block h-1 w-3 bg-yellow-500 opacity-80 backdrop-brightness-200 border border-white  animate-spin "></span>
-        </div>
       </div>
       <div>
         <div class="__p-2 flex items-center gap-1 overflow-hidden rounded-md bg-white px-4 text-slate-900"

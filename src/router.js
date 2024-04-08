@@ -37,6 +37,9 @@ function route(event) {
   URLLocationHandler();
 }
 
+const homeAnchor = document.getElementById("home");
+const docsAnchor = document.getElementById("docs");
+
 // change content as location changes
 async function URLLocationHandler() {
   const location = window.location.pathname;
@@ -55,6 +58,16 @@ async function URLLocationHandler() {
   document
     .querySelector('meta[name="description"]')
     .setAttribute("content", route.description);
+
+  if (location === "/") {
+    homeAnchor.classList.add("active");
+    docsAnchor.classList.remove("active");
+  } else if (location === "/docs") {
+    homeAnchor.classList.remove("active");
+    docsAnchor.classList.add("active");
+  }
+
+  // homeAnchor.classList.add("active");
 
   route.mainFn?.();
 }
