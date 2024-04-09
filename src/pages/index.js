@@ -1,4 +1,4 @@
-import { shortener } from "../utils/api.js";
+import { shortenURL } from "../utils/api.js";
 import { focusElement } from "../utils/helpers.js";
 
 export default function main() {
@@ -13,6 +13,9 @@ export default function main() {
 
   shorteningForm.addEventListener("submit", async (event) => {
     event.preventDefault();
+    const responseError = document.getElementById("response_error");
+
+    responseError.innerText = "";
 
     const formData = new FormData(event.target);
     const { long_url, custom_path } = Object.fromEntries(formData);
@@ -22,12 +25,21 @@ export default function main() {
       preferredPath: custom_path,
     };
 
-    const myHeaders = new Headers({
-      append: { "Content-Type": "application/json" },
-    });
-    // myHeaders.append("Content-Type", "application/json");
+    try {
+      const response = await shortenURL(payload);
 
-    const response = await shortener(payload);
-    console.log(response);
+      if (response.ok) {
+        console.log(response);
+      } else {
+        responseError.innerText = `❌ ${
+          response.message || "Error shortening link!"
+        }`;
+      }
+    } catch (error) {
+      console.error(`ERROR SHORTENING LINK: ${(error, error.message)}`);
+      responseError.innerText = `❌ ${
+        error.message || "Something went wrong!"
+      }`;
+    }
   });
 }
