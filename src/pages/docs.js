@@ -1,3 +1,1 @@
-export default function docsScript() {
-  console.log("hereeee");
-}
+export default function docsScript() {}

@@ -8,28 +8,26 @@ export default function main() {
 
   const customPathInput = document.getElementById("custom_path");
   const longUrlInput = document.getElementById("longUrl_input");
-  const loadingIndicator = document.getElementById("loading_indicator");
 
   const shorteningForm = document.getElementById("shortening_form");
 
   shorteningForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    loadingIndicator.classList.remove("opacity-0");
-    loadingIndicator.classList.add("opacity-100");
-
     const formData = new FormData(event.target);
     const { long_url, custom_path } = Object.fromEntries(formData);
 
     const payload = {
       mainUrl: long_url,
-      prefferedPath: custom_path,
+      preferredPath: custom_path,
     };
+
+    const myHeaders = new Headers({
+      append: { "Content-Type": "application/json" },
+    });
+    // myHeaders.append("Content-Type", "application/json");
 
     const response = await shortener(payload);
     console.log(response);
-
-    loadingIndicator.classList.add("opacity-0");
-    loadingIndicator.classList.remove("opacity-100");
   });
 }
