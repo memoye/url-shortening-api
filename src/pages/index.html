@@ -1,9 +1,10 @@
 <div class="grid items-center px-4 py-12 md:py-6 w-full">
-  <section class="flex flex-col gap-8 text-center lg:flex-row lg:text-left lg:mx-0 mx-auto items-center justify-center">
+  <section
+    class="flex flex-col gap-8 text-center lg:flex-row lg:text-left lg:mx-0 mx-auto items-stretch justify-center">
     <div class="max-w-xl space-y-4 lg:py-4 box-border lg:mx-0 mx-auto">
       <img src="/src/assets/undraw_link_shortener_mvf6.svg" class="w-full max-w-40 mx-auto lg:mx-0"
         alt="url shortening illustration">
-      <h1 class="text-2xl font-bold text-slate-900 md:text-4xl lg:text-5xl md:leading-tight text-balance">
+      <h1 class="text-3xl font-bold text-slate-900 md:text-4xl lg:text-5xl md:leading-tight text-balance">
         <span class="hidden md:inline">Short.ly - </span>The Shortcut to
         Shorter Links
       </h1>
@@ -14,7 +15,7 @@
       </p>
     </div>
 
-    <form id="shortening_form" class="space-y-4 flex-auto rounded-md lg:self-stretch bg-slate-900 p-6 text-white">
+    <form id="shortening_form" class="space-y-4 flex-auto rounded-md lg:self-stretch bg-slate-900 p-6 text-white ">
       <div class="flex justify-between items-center">
         <h2 class="text-left text-2xl">Shorten a URL</h2>
       </div>
@@ -51,8 +52,32 @@
         class="w-full bg-slate-500 p-2.5 font-semibold hover:bg-slate-600 transition-colors rounded-md"
         type="submit">Shorten</button>
 
-      <div class="text-center min-h-6 text-sm text-red-500" id="response_error"></div>
+      <div class="text-center text-sm text-red-500" id="response_error"></div>
+
+      <template id="response_container" class="text-left p-2 flex justify-between items-center w-full">
+        <div class="flex items-center gap-2">
+          <strong>Short link:&nbsp;</strong>
+          <div class="group  flex items-center gap-1">
+            <a id="short_link" href="#" target="_blank">https://short.ly/my-path</a>
+
+            <img src="/src/assets/window-icon.svg"
+              class="self-start transition-opacity opacity-0 group-hover:opacity-100" alt="window icon">
+          </div>
+        </div>
+
+        <button type="button" id="copy_btn" class="cursor-pointer bg-white/70" title="Copy link">
+          <svg width="18px" height="18px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M10 8V7C10 6.05719 10 5.58579 10.2929 5.29289C10.5858 5 11.0572 5 12 5H17C17.9428 5 18.4142 5 18.7071 5.29289C19 5.58579 19 6.05719 19 7V12C19 12.9428 19 13.4142 18.7071 13.7071C18.4142 14 17.9428 14 17 14H16M7 19H12C12.9428 19 13.4142 19 13.7071 18.7071C14 18.4142 14 17.9428 14 17V12C14 11.0572 14 10.5858 13.7071 10.2929C13.4142 10 12.9428 10 12 10H7C6.05719 10 5.58579 10 5.29289 10.2929C5 10.5858 5 11.0572 5 12V17C5 17.9428 5 18.4142 5.29289 18.7071C5.58579 19 6.05719 19 7 19Z"
+              stroke="#fff" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+      </template>
+
+      <div id="replace"></div>
 
     </form>
+
+
   </section>
 </div>

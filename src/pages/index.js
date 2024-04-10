@@ -1,5 +1,5 @@
 import { shortenURL } from "../utils/api.js";
-import { focusElement } from "../utils/helpers.js";
+import { createLinkComponent, focusElement } from "../utils/helpers.js";
 
 export default function main() {
   document.getElementById("customPath_field").addEventListener("click", (e) => {
@@ -24,6 +24,8 @@ export default function main() {
       mainUrl: long_url,
       preferredPath: custom_path,
     };
+
+    createLinkComponent(long_url);
 
     try {
       const response = await shortenURL(payload);

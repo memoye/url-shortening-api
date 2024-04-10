@@ -10,6 +10,9 @@ document.addEventListener("click", (event) => {
   route(event);
 });
 
+const loadingIndicator =
+  '<div class="self-stretch w-full grid place-items-center"><img src="/src/assets/loading.gif" alt="loading"></div>';
+
 const routes = {
   404: {
     template: "/404.html",
@@ -43,6 +46,11 @@ const docsAnchor = document.getElementById("docs");
 // change content as location changes
 async function URLLocationHandler() {
   const location = window.location.pathname;
+  const pageContent = document.getElementById("content");
+
+  // set loading
+  pageContent.innerHTML = loadingIndicator;
+  document.title = "Short.ly | Loading...";
 
   if (location.length == 0) {
     location = "/";
@@ -53,7 +61,7 @@ async function URLLocationHandler() {
     response.text()
   );
 
-  document.getElementById("content").innerHTML = html;
+  pageContent.innerHTML = html;
   document.title = route.title;
   document
     .querySelector('meta[name="description"]')
@@ -73,7 +81,7 @@ async function URLLocationHandler() {
 }
 
 // watch for url changes
-// window.onpopstate = URLLocationHandler;
-// window.route = route;
+window.onpopstate = URLLocationHandler;
+window.route = route;
 
 URLLocationHandler();

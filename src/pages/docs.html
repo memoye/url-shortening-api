@@ -1,12 +1,186 @@
-<div class="px-4 py-12 md:py-6 w-full prose">
-  <h1>Short.ly API Documentation</h1>
-  <p></p>
-  <pre>
-    <code class="language-js">
-      {
-          "mainUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ&t=42s",
-          "preferredPath": "my-unique-path"
-      }
-    </code>
-    </pre>
+<div class="px-4 py-12 max-w-3xl mx-auto md:py-6 w-full prose">
+  <h1>URL Shortener API</h1>
+  <p> The URL Shortener API provides a simple way to shorten long URLs. It offers two main endpoints:</p>
+
+  <ol>
+    <li>
+      <p>
+        <strong>
+          <!-- <span class="text-yellow-500 text-lg font-bold">POST</span> -  -->
+          Create URL:&nbsp;</strong>
+        This endpoint accepts a long URL and an optional preferred path, and responds with the
+        shortened URL.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        <strong>
+          <!-- <span class="text-blue-500 text-lg font-bold">GET</span> -  -->
+          Get Long URL:&nbsp;</strong>
+        This endpoint retrieves the original long URL given the ID (preferredPath) of the shortened URL.
+      </p>
+    </li>
+  </ol>
+
+  <h2>
+    <span class="text-yellow-500 text-xl font-bold">POST</span> Create URL
+
+    <code>/Uri/create-url</code>
+  </h2>
+  <p>To shorten a long URL, send a <span class="font-medium">POST</span> request to the <code>/Uri/create-url</code>
+    endpoint with a JSON payload
+    containing the following
+    properties:</p>
+  <pre><code class="language-js">
+        <span class="text-amber-300">{</span>
+            <span class="text-rose-500">"mainUrl"</span><span class="text-blue-400">:</span> <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&t=42s" class="no-underline text-yellow-500">"https://www.verylongandcomplexurl.com/a/path/that/is/really/long"</a><span class="text-blue-400">,</span>
+            <span class="text-rose-500">"preferredPath"</span><span class="text-blue-400">:</span> <span class="text-yellow-500">"my-unique-path"</span>
+        <span class="text-amber-300">}</span>
+      </code></pre>
+
+  <h3>Request</h3>
+  <div class="font-thin">BODY</div>
+  <ul>
+    <li>
+      <p><strong><code>mainUrl</code></strong> <em class="font-light text-yellow-500">required</em> </p>
+      <p>
+        The long URL you want to shorten.
+      </p>
+    </li>
+
+    <li>
+      <p><strong><code>preferredPath</code></strong> <em class="font-light text-gray-500">optional</em> </p>
+      <p>
+        The custom path you would like for the shortened URL (e.g.
+        <code><span class="underline font-thin">https://short.ly/my-unique-path</span></code>). If not provided, a
+        random
+        path will be generated.
+      </p>
+    </li>
+  </ul>
+
+  <h3>Response</h3>
+  <p>The API will respond with a JSON object containing the shortened URL: </p>
+  <pre><code class="language-js">
+    <span class="text-amber-300">{</span>
+        <span class="text-rose-500">"shortenedUrl"</span><span class="text-blue-400">:</span> <span class="text-yellow-500">"https://short.ly/my-unique-path"</span>
+    <span class="text-amber-300">}</span>
+  </code></pre>
+
+  <h3>Error</h3>
+  <!-- <p>The API will respond with a JSON object containing the shortened URL: </p>
+  <pre><code class="language-js">
+    <span class="text-amber-300">{</span>
+        <span class="text-rose-500">"shortenedUrl"</span><span class="text-blue-400">:</span> <span class="text-yellow-500">"https://short.ly/my-unique-path"</span>
+    <span class="text-amber-300">}</span>
+  </code></pre> -->
+
+
+  <h2>
+    <span class="text-blue-500 text-xl font-bold">GET</span> Get Long URL
+
+    <code>/Uri</code>
+  </h2>
+  <p>To retrieve the original long URL from a shortened URL, send a <span class="font-medium">GET</span> request to the
+    <code>/Uri</code>
+    endpoint with the <code>path</code>
+    query parameter as shown in this example;
+  </p>
+  <pre><code class="language-js">
+        GET /get?path=my-unique-path
+      </code></pre>
+
+  <h3>Request</h3>
+  <div class="font-thin">QUERY</div>
+  <ul>
+    <li>
+      <p><strong><code>path</code></strong> <em class="font-light text-yellow-500">required</em> </p>
+      <p>
+        The shortened URL path.
+      </p>
+    </li>
+  </ul>
+
+  <h3>Response</h3>
+  <p>The API will respond with a JSON object containing the original long URL:</p>
+  <pre><code class="language-js">
+    <span class="text-amber-300">{</span>
+        <span class="text-rose-500">"mainUrl"</span><span class="text-blue-400">:</span> <span class="text-yellow-500">"https://www.verylongandcomplexurl.com/a/path/that/is/really/long"</span>
+    <span class="text-amber-300">}</span>
+  </code></pre>
+
+
+  <!-- Here is the copy for the documentation webpage of the REST API that shortens long URLs:
+
+  # URL Shortener API
+
+
+
+  1. **Shorten URL (POST)**: This endpoint accepts a long URL and an optional preferred path, and responds with the
+  shortened URL.
+  2. **Get Long URL (GET)**: This endpoint retrieves the original long URL given the ID of the shortened URL.
+
+
+  ## Shorten URL (POST)
+
+  To shorten a long URL, send a POST request to the `/shorten` endpoint with a JSON payload containing the following
+  properties:
+
+  ```json
+  {
+  "mainUrl": "https://www.verylongandcomplexurl.com/some/path/that/is/really/long/and/complicated",
+  "preferredPath": "my-short-link"
+  }
+  ```
+
+  - `mainUrl` *(required)* - The long URL you want to shorten.
+  - `preferredPath` *(optional)* - The custom path you would like for the shortened URL (e.g.
+  `https://mysite.com/my-short-link`). If not provided, a random path will be generated.
+
+  The API will respond with a JSON object containing the shortened URL:
+
+  ```json
+  {
+  "shortenedUrl": "https://mysite.com/my-short-link"
+  }
+  ```
+
+  ## Get Long URL (GET)
+
+  To retrieve the original long URL from a shortened URL, send a GET request to the `/get` endpoint with the ID of the
+  shortened URL in the URL path:
+
+  `GET /get/my-short-link`
+
+  The API will respond with a JSON object containing the original long URL:
+
+  ```json
+  {
+  "longUrl": "https://www.verylongandcomplexurl.com/some/path/that/is/really/long/and/complicated"
+  }
+  ```
+
+  ## Error Handling
+
+  If there is an issue with the request, the API will respond with an appropriate HTTP status code and a JSON object
+  containing an error message:
+
+  ```json
+  {
+  "error": "The provided URL is not valid."
+  }
+  ```
+
+  ## Rate Limiting
+
+  To prevent abuse, the API has a rate limit of 100 requests per hour per IP address. If you exceed this limit, you
+  will
+  receive a `429 Too Many Requests` response.
+
+  ## Authentication
+
+  This API is public and does not require any authentication. However, if you plan to use it extensively, please
+  contact
+  us to discuss a paid plan with higher rate limits. -->
 </div>
