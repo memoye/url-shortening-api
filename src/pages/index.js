@@ -25,7 +25,7 @@ export default function main() {
       preferredPath: custom_path,
     };
 
-    createLinkComponent(long_url);
+    // createLinkComponent(long_url);
 
     try {
       const response = await shortenURL(payload);
